@@ -1,7 +1,6 @@
 Wazuh Multi-Tenant Monitoring on AWS - Proof-of-Concept
 Project Overview
-
-This is a proof-of-concept project that demonstrates the deployment and configuration of Wazuh SIEM to monitor multiple AWS tenants. The project includes the setup of AWS infrastructure, the integration of Wazuh for log monitoring, and the implementation of Role-Based Access Control (RBAC) with custom dashboards. It aims to provide a cost-effective, cloud-ready SIEM solution for monitoring multi-tenant AWS environments.
+This is a proof-of-concept project demonstrating how to deploy and configure Wazuh SIEM (Security Information and Event Management) to monitor multiple AWS tenants. It includes the setup of cloud infrastructure, integration with Wazuh for log monitoring, and implementation of Role-Based Access Control (RBAC) with custom dashboards for multi-tenant environments. This solution provides a cost-effective, cloud-ready way to monitor and manage security logs from multiple tenants in AWS.
 
 Key Features
 
@@ -95,6 +94,7 @@ Solution: Implemented Wazuh RBAC using OpenSearch DLS to resolve the issues and 
 Problem: Wazuh server was uninstalled due to misconfiguration.
 
 Solution: Cloned the existing server configuration on Linode, migrated data, and deployed the latest version of Wazuh.
+
 Key Learnings
 
 Cloud Deployment: Gained hands-on experience in deploying and configuring cloud environments.

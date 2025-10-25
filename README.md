@@ -1,60 +1,108 @@
-# wazuh-siem-aws-integration
-A proof-of-concept project demonstrating the deployment and configuration of Wazuh SIEM to monitor multiple AWS tenants, with custom dashboards, alerting, and RBAC integration for secure multi-tenant log management in the cloud.
-1. Repository Overview
+Wazuh Multi-Tenant Monitoring on AWS - Proof-of-Concept
+Project Overview
 
-Title: Monitoring Multiple AWS Tenants with Wazuh: A Proof-of-Concept
+This is a proof-of-concept project that demonstrates the deployment and configuration of Wazuh SIEM to monitor multiple AWS tenants. The project includes the setup of AWS infrastructure, the integration of Wazuh for log monitoring, and the implementation of Role-Based Access Control (RBAC) with custom dashboards. It aims to provide a cost-effective, cloud-ready SIEM solution for monitoring multi-tenant AWS environments.
 
-Description: Briefly explain the project’s purpose, which in this case, is to provision, configure, and manage a cloud-based SIEM system (Wazuh) that monitors multi-tenant AWS environments.
+Key Features
 
-2. Project Setup Instructions
+Multi-Tenant Monitoring: Set up Wazuh SIEM to monitor multiple AWS accounts using custom tenant configurations.
 
-Prerequisites: List the tools, frameworks, and services required to run the project. For example:
+RBAC Integration: Configured RBAC using OpenSearch DLS to ensure proper tenant isolation and access control.
 
-AWS (EC2, S3, IAM, CloudWatch)
+Alerting & Notification System: Integrated alert notifications using built-in SIEM features and SMTP/Relay Server setup for secure communication.
 
-Linode Cloud Infrastructure
+Cloud Infrastructure Setup: Provisioned Linode cloud infrastructure to deploy Wazuh components in a single-node architecture.
 
-Wazuh SIEM
+Project Setup Instructions
+Prerequisites
 
-OpenSearch (for RBAC)
+To run this project, you'll need the following:
 
-SMTP server and Relay Server setup
+AWS Account: EC2, S3, IAM, CloudWatch services.
 
-Installation Guide: Step-by-step instructions on setting up the environment, configuring the necessary components (Wazuh, AWS), and provisioning the cloud infrastructure on Linode.
+Linode Cloud Infrastructure: For deploying Wazuh components.
 
-3. Configuration Details
+Wazuh SIEM: For log management and monitoring.
 
-Cloud Infrastructure: Describe how you provisioned and configured Linode cloud infrastructure.
+OpenSearch: For Role-Based Access Control (RBAC) configuration.
 
-Tenant Simulation: Detail how you simulated multi-tenant workloads using distinct AWS accounts.
+SMTP/Relay Server: For alert notifications.
 
-Wazuh Setup: Explain the setup of Wazuh, including RBAC configuration using DLS (for tenant separation).
+Installation Guide
 
-4. Key Features
+Provision AWS Resources:
 
-Multi-Tenant Monitoring: Outline how the setup provides multi-tenant monitoring and the key components used to achieve that (AWS services, Wazuh features).
+Set up AWS EC2 instances and configure IAM policies.
 
-Alerting and Notifications: Show how the alert system works by integrating SIEM features with a secure SMTP server.
+Set up CloudWatch for log collection.
 
-RBAC and Custom Dashboards: Describe the RBAC setup and how you built custom dashboards for tenant environments.
+Provision Linode Infrastructure:
 
-5. Challenges and Solutions
+Create Linode instances to host Wazuh components.
 
-Integration Challenges: Provide details on the issues faced while fetching logs from AWS CloudWatch to Wazuh, and how they were resolved (e.g., adjusting IAM policies).
+Ensure secure SSH access and configure your firewall.
 
-Tenant Separation Issue: Explain the RBAC issues you faced and how you solved them using OpenSearch DLS features.
+Deploy Wazuh SIEM:
 
-System Compromise: Mention the challenge with the Wazuh server and how you managed the recovery by cloning and redeploying the system.
+Install Wazuh manager and agent on your EC2 instances.
 
-6. Key Learnings
+Set up and configure the Wazuh server on Linode for log aggregation and monitoring.
 
-Deploying, configuring, and managing a cloud environment.
+Configure RBAC:
 
-Simulating real workloads and handling live systems.
+Set up OpenSearch for RBAC and create custom dashboards.
 
-Integrating systems with connectors and agents.
+Integrate Wazuh with OpenSearch for tenant isolation and security.
 
+Configure Alerts:
 
-Performing system upgrades and maintenance tasks.
+Set up an SMTP server to send email alerts.
 
-Troubleshooting and fixing system bugs.
+Configure Wazuh to notify based on predefined rules.
+Configuration Details
+Cloud Infrastructure
+
+AWS: Utilized EC2, S3, and IAM for secure cloud operations.
+
+Linode: Provisioned Linode to deploy Wazuh SIEM components and manage the logs from AWS tenants.
+
+Wazuh Setup
+
+Single-Node Architecture: Deployed Wazuh components (manager, agents) in a single-node architecture on Linode.
+
+Multi-Tenant Simulation: Used two distinct AWS accounts to simulate multi-tenant workloads.
+
+Role-Based Access Control (RBAC)
+
+OpenSearch DLS: Used OpenSearch’s DLS feature for tenant isolation.
+
+Custom Dashboards: Configured custom dashboards per tenant for clear segregation of monitoring data.
+Challenges & Solutions
+1. Log Fetching Error
+
+Problem: Encountered unsuccessful log fetching from AWS CloudWatch to Wazuh.
+
+Solution: Adjusted IAM policies using the least privilege model and granted full access for the POC deployment.
+
+2. RBAC Issues
+
+Problem: RBAC rules caused failure in tenant dashboard segregation.
+
+Solution: Implemented Wazuh RBAC using OpenSearch DLS to resolve the issues and allow full cluster permissions.
+
+3. System Compromise
+
+Problem: Wazuh server was uninstalled due to misconfiguration.
+
+Solution: Cloned the existing server configuration on Linode, migrated data, and deployed the latest version of Wazuh.
+Key Learnings
+
+Cloud Deployment: Gained hands-on experience in deploying and configuring cloud environments.
+
+Real-Time Troubleshooting: Worked on handling live systems and troubleshooting issues in real-time.
+
+System Integration: Integrated multiple systems (AWS, Linode, Wazuh, OpenSearch) to provide comprehensive monitoring.
+
+RBAC Management: Learned how to configure and manage Role-Based Access Control in a multi-tenant environment.
+
+System Maintenance: Performed system upgrades, maintenance tasks, and bug fixing to ensure seamless operations.
